@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Library</title>
+    <link rel="stylesheet" href="{% static 'home.css' %}">
+</head>
+<body>
+
+<h1>Book Library</h1>
+
+<a href="{% url 'add_book' %}">Add New Book</a>
+
+<hr>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>Book Name</th>
+        <th>Author</th>
+        <th>Published Date</th>
+        <th>Rating</th>
+    </tr>
+
+    {% for book in books %}
+    <tr>
+        <td>{{ book.book_name }}</td>
+        <td>{{ book.author }}</td>
+        <td>{{ book.pub_date }}</td>
+        <td>{{ book.rate }}</td>
+        <td>
+
+        <a href="{% url 'update_book' book.id %}">Edit</a><br>
+
+        <a href="{% url 'delete_book' book.id %}">Delete</a>
+
+        </td>
+        
+    </tr>
+    {% endfor %}
+
+</table>
+<br>
+
+<a href="{% url 'logout' %}">LOGOUT</a>
+
+</body>
+</html>

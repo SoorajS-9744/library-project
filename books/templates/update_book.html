@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Book</title>
+    <link rel="stylesheet" href="{% static 'update_book.css' %}">
+</head>
+<body>
+
+<h1>Update Book</h1>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <input type="text" name="book_name" value="{{ book.book_name }}"><br><br>
+
+    <input type="text" name="author" value="{{ book.author }}"><br><br>
+
+    <input type="date" name="pub_date" value="{{ book.pub_date|date:'Y-m-d' }}"><br><br>
+
+    <input type="number" step="0.1" name="rate" value="{{ book.rate }}"><br><br>
+
+    <button type="submit">Update</button>
+
+</form>
+
+</body>
+</html>
